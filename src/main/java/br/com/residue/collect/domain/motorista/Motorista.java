@@ -16,14 +16,10 @@ public class Motorista {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idMotorista;
-
     private String nome;
-
     @Column(unique = true)
     private String email;
-
     private String telefone;
-
     private String senha;
 
     @Column(name = "cateira_habilitacao", unique = true)

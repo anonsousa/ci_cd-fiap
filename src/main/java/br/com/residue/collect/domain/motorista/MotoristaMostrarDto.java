@@ -4,20 +4,13 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public record MotoristaMostrarDto(
-
         UUID idMotorista,
-
         String nome,
-
         String email,
-
         String telefone,
-
         String carteiraHabilitacao,
-
-        LocalDate dataCadastro
-
-) {
+        LocalDate dataCadastro)
+{
     public MotoristaMostrarDto(Motorista motorista){
         this(
                 motorista.getIdMotorista(),

@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record MotoristaCadastroDto(
-
         @NotBlank(message = "Nome é obrigatorio")
         @Pattern(regexp = "^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$", message = "Nome inválido.")
         String nome,
@@ -25,8 +24,6 @@ public record MotoristaCadastroDto(
 
         @NotBlank(message = "Carteira de Habilitação é obrigatório!")
         @Pattern(regexp = "^[0-9]+$", message = "Somente números são permitidos.")
+        @Size(min = 12, max = 12, message = "A CNH possui 12 caracteres!")
         String carteiraHabilitacao
-
-) {
-
-}
+) { }

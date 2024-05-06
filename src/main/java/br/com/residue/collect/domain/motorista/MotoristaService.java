@@ -40,6 +40,16 @@ public class MotoristaService {
         return motoristaPage.map(MotoristaMostrarDto::new);
     }
 
+    public String deleteById(UUID uuid){
+        Optional<Motorista> motoristaOptional = motoristaRepository.findById(uuid);
+        if (motoristaOptional.isPresent()){
+            motoristaRepository.deleteById(motoristaOptional.get().getIdMotorista());
+            return "Motorista deletado com sucesso!";
+        } else {
+            throw new RuntimeException("Motorista nao encontrado.");
+        }
+    }
+
 
 
 

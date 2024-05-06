@@ -34,6 +34,11 @@ public class MotoristaController {
         return ResponseEntity.status(HttpStatus.OK).body(motoristaService.findAll(pageable));
     }
 
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity deleteById(@PathVariable UUID uuid){
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(motoristaService.deleteById(uuid));
+    }
+
 
 
 
