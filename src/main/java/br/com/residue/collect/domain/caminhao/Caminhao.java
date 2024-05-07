@@ -1,6 +1,7 @@
 package br.com.residue.collect.domain.caminhao;
 
 import br.com.residue.collect.domain.motorista.Motorista;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,6 +23,7 @@ public class Caminhao {
 
     @OneToOne
     @JoinColumn(name = "motorista_id")
+    @JsonBackReference
     private Motorista motorista;
 
     private String placa;
@@ -36,20 +38,20 @@ public class Caminhao {
     private BigDecimal capacidade;
 
 
-    public UUID getIdCaminhao() {
-        return idCaminhao;
-    }
-
-    public void setIdCaminhao(UUID idCaminhao) {
-        this.idCaminhao = idCaminhao;
-    }
-
     public Motorista getMotorista() {
         return motorista;
     }
 
     public void setMotorista(Motorista motorista) {
         this.motorista = motorista;
+    }
+
+    public UUID getIdCaminhao() {
+        return idCaminhao;
+    }
+
+    public void setIdCaminhao(UUID idCaminhao) {
+        this.idCaminhao = idCaminhao;
     }
 
     public String getPlaca() {

@@ -1,10 +1,7 @@
 package br.com.residue.collect.controller;
 
 
-import br.com.residue.collect.domain.caminhao.Caminhao;
-import br.com.residue.collect.domain.caminhao.CaminhaoAtualizarDto;
-import br.com.residue.collect.domain.caminhao.CaminhaoCadastroDto;
-import br.com.residue.collect.domain.caminhao.CaminhaoService;
+import br.com.residue.collect.domain.caminhao.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,9 +30,10 @@ public class CaminhaoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Caminhao>> findAllId(Pageable pageable){
+    public ResponseEntity<Page<CaminhaoMostrarDto>> findAllId(Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(caminhaoService.findAll(pageable));
     }
+
 
     @DeleteMapping("/{uuid}")
     public ResponseEntity deleteById(@PathVariable UUID uuid){

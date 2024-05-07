@@ -1,9 +1,6 @@
 package br.com.residue.collect.domain.caminhao;
 
 import br.com.residue.collect.domain.motorista.Motorista;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.util.UUID;

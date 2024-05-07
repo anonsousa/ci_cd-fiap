@@ -1,6 +1,7 @@
 package br.com.residue.collect.domain.caminhao;
 
 import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ public class CaminhaoService {
     CaminhaoRepository caminhaoRepository;
 
 
+    @Transactional
     public Caminhao save(CaminhaoCadastroDto caminhaoCadastroDto){
 
         Caminhao caminhao = new Caminhao();
@@ -36,10 +38,12 @@ public class CaminhaoService {
         }
     }
 
-    public Page<Caminhao> findAll(Pageable pageable){
-        return caminhaoRepository.findAll(pageable);
+    public Page<CaminhaoMostrarDto> findAll(Pageable pageable){
+        return caminhaoRepository.findAll(pageable).map(CaminhaoMostrarDto::new);
     }
 
+
+    @Transactional
     public void delete(UUID uuid){
         Optional<Caminhao> caminhaoOptional = caminhaoRepository.findById(uuid);
         if(caminhaoOptional.isPresent()){
@@ -50,6 +54,7 @@ public class CaminhaoService {
 
     }
 
+    @Transactional
     public CaminhaoMostrarDto update(CaminhaoAtualizarDto caminhaoAtualizarDto){
         Optional<Caminhao> caminhaoOptional = caminhaoRepository.findById(caminhaoAtualizarDto.idCaminhao());
         if (caminhaoOptional.isPresent()){

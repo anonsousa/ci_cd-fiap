@@ -7,6 +7,8 @@ import br.com.residue.collect.domain.motorista.MotoristaRepository;
 import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -27,7 +29,16 @@ public class RelacionamentoService {
 
         caminhao.setMotorista(motorista);
         motorista.setCaminhao(caminhao);
+    }
 
-        motoristaRepository.save(motorista);
+    @Transactional
+    public void deleteMotoristaCaminhao(UUID idCaminhao){
+        Caminhao caminhao = caminhaoRepository.findById(idCaminhao).orElseThrow(() -> new ItemNotFoundException("Caminhao nao encontrado"));
+        caminhao.setMotorista(null);
+        caminhaoRepository.save(caminhao);
+    }
+
+    public Page<Caminhao> findAllWithMotorista(Pageable pageable){
+        return caminhaoRepository.findAllWithMotorista(pageable);
     }
 }

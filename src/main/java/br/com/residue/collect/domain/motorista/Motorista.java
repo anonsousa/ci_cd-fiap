@@ -1,6 +1,8 @@
 package br.com.residue.collect.domain.motorista;
 
 import br.com.residue.collect.domain.caminhao.Caminhao;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +21,7 @@ public class Motorista {
     private UUID idMotorista;
 
     @OneToOne(mappedBy = "motorista")
+    @JsonIgnore
     private Caminhao caminhao;
 
     private String nome;

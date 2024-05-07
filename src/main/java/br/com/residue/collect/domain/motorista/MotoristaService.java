@@ -2,6 +2,7 @@ package br.com.residue.collect.domain.motorista;
 
 
 import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ public class MotoristaService {
     @Autowired
     private MotoristaRepository motoristaRepository;
 
+    @Transactional
     public MotoristaMostrarDto save(MotoristaCadastroDto motoristaCadastroDto){
 
         Motorista motorista = new Motorista();
@@ -41,6 +43,7 @@ public class MotoristaService {
         return motoristaPage.map(MotoristaMostrarDto::new);
     }
 
+    @Transactional
     public void deleteById(UUID uuid){
         Optional<Motorista> motoristaOptional = motoristaRepository.findById(uuid);
         if (motoristaOptional.isPresent()){
@@ -50,6 +53,7 @@ public class MotoristaService {
         }
     }
 
+    @Transactional
     public MotoristaMostrarDto update(MotoristaAtualizarDto motoristaAtualizarDto){
         Optional<Motorista> motoristaOptional = motoristaRepository.findById(motoristaAtualizarDto.idMotorista());
         if (motoristaOptional.isPresent()){
