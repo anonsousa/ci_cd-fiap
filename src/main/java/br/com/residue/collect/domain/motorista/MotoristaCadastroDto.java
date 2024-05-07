@@ -18,10 +18,6 @@ public record MotoristaCadastroDto(
         @Pattern(regexp = "^[0-9]+$", message = "Somente números são permitidos.")
         String telefone,
 
-        @NotBlank(message = "Senha é obrigatório")
-        @Size(min = 8, max = 16, message = "Tamanho min 8, max 16.")
-        String senha,
-
         @NotBlank(message = "Carteira de Habilitação é obrigatório!")
         @Pattern(regexp = "^[0-9]+$", message = "Somente números são permitidos.")
         @Size(min = 12, max = 12, message = "A CNH possui 12 caracteres!")

@@ -1,6 +1,7 @@
 package br.com.residue.collect.domain.motorista;
 
 
+import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -40,13 +41,23 @@ public class MotoristaService {
         return motoristaPage.map(MotoristaMostrarDto::new);
     }
 
-    public String deleteById(UUID uuid){
+    public void deleteById(UUID uuid){
         Optional<Motorista> motoristaOptional = motoristaRepository.findById(uuid);
         if (motoristaOptional.isPresent()){
             motoristaRepository.deleteById(motoristaOptional.get().getIdMotorista());
-            return "Motorista deletado com sucesso!";
         } else {
-            throw new RuntimeException("Motorista nao encontrado.");
+            throw new ItemNotFoundException("Motorista nao encontrado.");
+        }
+    }
+
+    public MotoristaMostrarDto update(MotoristaAtualizarDto motoristaAtualizarDto){
+        Optional<Motorista> motoristaOptional = motoristaRepository.findById(motoristaAtualizarDto.idMotorista());
+        if (motoristaOptional.isPresent()){
+            Motorista motorista = motoristaOptional.get();
+            BeanUtils.copyProperties(motoristaAtualizarDto, motorista);
+            return new MotoristaMostrarDto(motoristaRepository.save(motorista));
+        } else {
+            throw  new ItemNotFoundException("Motorista nao encontrado, verifique o Id");
         }
     }
 

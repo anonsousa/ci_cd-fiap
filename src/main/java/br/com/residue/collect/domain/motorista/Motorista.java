@@ -1,5 +1,6 @@
 package br.com.residue.collect.domain.motorista;
 
+import br.com.residue.collect.domain.caminhao.Caminhao;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,11 +17,14 @@ public class Motorista {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idMotorista;
+
+    @OneToOne(mappedBy = "motorista")
+    private Caminhao caminhao;
+
     private String nome;
     @Column(unique = true)
     private String email;
     private String telefone;
-    private String senha;
 
     @Column(name = "cateira_habilitacao", unique = true)
     private String carteiraHabilitacao;
@@ -28,6 +32,14 @@ public class Motorista {
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
 
+
+    public Caminhao getCaminhao() {
+        return caminhao;
+    }
+
+    public void setCaminhao(Caminhao caminhao) {
+        this.caminhao = caminhao;
+    }
 
     public String getNome() {
         return nome;
@@ -59,14 +71,6 @@ public class Motorista {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getCarteiraHabilitacao() {

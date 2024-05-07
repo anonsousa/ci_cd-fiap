@@ -1,10 +1,13 @@
 package br.com.residue.collect.controller;
 
 
+import br.com.residue.collect.domain.motorista.MotoristaAtualizarDto;
 import br.com.residue.collect.domain.motorista.MotoristaCadastroDto;
+import br.com.residue.collect.domain.motorista.MotoristaMostrarDto;
 import br.com.residue.collect.domain.motorista.MotoristaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +33,19 @@ public class MotoristaController {
     }
 
     @GetMapping
-    public ResponseEntity findAll(Pageable pageable){
+    public ResponseEntity<Page<MotoristaMostrarDto>> findAll(Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(motoristaService.findAll(pageable));
     }
 
     @DeleteMapping("/{uuid}")
     public ResponseEntity deleteById(@PathVariable UUID uuid){
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(motoristaService.deleteById(uuid));
+        motoristaService.deleteById(uuid);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Motorista deletado com sucesso");
+    }
+
+    @PutMapping
+    public ResponseEntity update(@RequestBody @Valid MotoristaAtualizarDto motoristaAtualizarDto){
+        return ResponseEntity.status(HttpStatus.OK).body(motoristaService.update(motoristaAtualizarDto));
     }
 
 
