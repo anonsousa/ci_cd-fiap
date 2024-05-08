@@ -25,7 +25,7 @@ public record CaminhaoAtualizarDto(
         @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
         String renavam,
 
-        TiposdeResiduos tiposdeResiduos,
+        TiposResiduos tiposResiduos,
 
         @NotBlank
         String bairroColeta,

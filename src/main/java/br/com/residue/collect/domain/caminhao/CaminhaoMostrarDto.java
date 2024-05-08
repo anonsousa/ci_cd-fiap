@@ -12,7 +12,7 @@ public record CaminhaoMostrarDto(
         String placa,
         String modelo,
         String renavam,
-        TiposdeResiduos tiposdeResiduos,
+        TiposResiduos tiposResiduos,
         String bairroColeta,
         BigDecimal capacidade
 

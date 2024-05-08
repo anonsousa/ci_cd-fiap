@@ -20,7 +20,7 @@ public record CaminhaoCadastroDto(
         String renavam,
 
 
-        TiposdeResiduos tiposdeResiduos,
+        TiposResiduos tiposResiduos,
 
         @NotBlank
         String bairroColeta,
