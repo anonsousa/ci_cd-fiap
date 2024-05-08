@@ -17,6 +17,6 @@ public interface CaminhaoRepository extends JpaRepository<Caminhao, UUID> {
     @Query("SELECT c FROM Caminhao c WHERE c.motorista IS NOT NULL")
     Page<Caminhao> findAllWithMotorista(Pageable pageable);
 
-    @Query("SELECT c FROM Caminhao c JOIN Coleta co ON c.idCaminhao = co.idCaminhao WHERE co.volumePeso <= :peso")
-    List<Caminhao> findCaminhoesComCapacidadeParaColeta(BigDecimal peso);
+    @Query("SELECT c FROM Caminhao c WHERE c.capacidade >= :volumePeso")
+    List<Caminhao> findCaminhoesComCapacidadeParaColeta(BigDecimal volumePeso);
 }
