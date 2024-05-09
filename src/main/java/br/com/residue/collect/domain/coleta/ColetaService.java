@@ -28,13 +28,15 @@ public class ColetaService {
         BeanUtils.copyProperties(coletaCadastroDto, coleta);
         List<Caminhao> caminhaoPage = caminhaoRepository.findCaminhoesComCapacidadeParaColeta(coletaCadastroDto.volumePeso());
         if (caminhaoPage.isEmpty()){
-            coleta.setIdCaminhao(null);
+            throw new ItemNotFoundException("Não há caminhões disponiveis no momento!");
         } else {
             Caminhao caminhao = caminhaoPage.get(0);
             coleta.setIdCaminhao(caminhao.getIdCaminhao());
+            coleta.setStatus(TiposStatus.ATIVO);
+            caminhaoRepository.adicionarVolumePesoACapacidade(caminhao.getIdCaminhao(), coleta.getVolumePeso());
+            return coletaRepository.save(coleta);
         }
-        coleta.setStatus(TiposStatus.ATIVO);
-        return coletaRepository.save(coleta);
+
     }
 
     public Coleta findById(UUID idcoleta){
