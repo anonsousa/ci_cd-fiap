@@ -20,6 +20,7 @@ public class Coleta {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idColeta;
+
     @Column(name = "bairro_coleta")
     private String bairroColeta;
 

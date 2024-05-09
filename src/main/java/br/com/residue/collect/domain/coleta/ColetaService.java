@@ -2,7 +2,6 @@ package br.com.residue.collect.domain.coleta;
 
 import br.com.residue.collect.domain.caminhao.Caminhao;
 import br.com.residue.collect.domain.caminhao.CaminhaoRepository;
-import br.com.residue.collect.domain.caminhao.TiposResiduos;
 import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
@@ -50,4 +49,28 @@ public class ColetaService {
     public Page<Coleta> findAll(Pageable pageable){
         return coletaRepository.findAll(pageable);
     }
+
+    @Transactional
+    public Coleta update(ColetaAtualizarDto coletaAtualizarDto){
+        Optional<Coleta> coletaOptional = coletaRepository.findById(coletaAtualizarDto.idColeta());
+        if(coletaOptional.isPresent()){
+            Coleta coleta = coletaOptional.get();
+            BeanUtils.copyProperties(coletaAtualizarDto, coleta);
+            return coletaRepository.save(coleta);
+        } else {
+            throw new ItemNotFoundException("Coleta nao encontrada!");
+        }
+    }
+
+    @Transactional
+    public void delete(UUID uuid){
+        Optional<Coleta> coletaOptional = coletaRepository.findById(uuid);
+        if(coletaOptional.isPresent()){
+            coletaRepository.deleteById(uuid);
+        } else {
+            throw new ItemNotFoundException("Coleta nao encontrada!");
+        }
+    }
+
+
 }
