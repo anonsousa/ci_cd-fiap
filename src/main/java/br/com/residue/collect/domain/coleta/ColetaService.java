@@ -48,6 +48,14 @@ public class ColetaService {
         }
     }
 
+    public Page<Coleta> findByAtivo(Pageable pageable){
+        return coletaRepository.findByStatusAtivo(pageable);
+    }
+
+    public Page<Coleta> findByColetado(Pageable pageable){
+        return coletaRepository.findByStatusColetado(pageable);
+    }
+
     public Page<Coleta> findAll(Pageable pageable){
         return coletaRepository.findAll(pageable);
     }

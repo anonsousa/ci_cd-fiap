@@ -37,6 +37,16 @@ public class ColetaController {
         return ResponseEntity.status(HttpStatus.OK).body(coletaService.findById(uuid));
     }
 
+    @GetMapping("/status/ativo")
+    public ResponseEntity<Page<Coleta>> findByAtivo(Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(coletaService.findByAtivo(pageable));
+    }
+
+    @GetMapping("/status/coletado")
+    public ResponseEntity<Page<Coleta>> findByColetado(Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(coletaService.findByColetado(pageable));
+    }
+
     @GetMapping
     public ResponseEntity<Page<Coleta>> findAll(Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(coletaService.findAll(pageable));

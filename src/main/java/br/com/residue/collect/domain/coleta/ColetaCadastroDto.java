@@ -3,6 +3,7 @@ package br.com.residue.collect.domain.coleta;
 import br.com.residue.collect.domain.caminhao.TiposResiduos;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ public record ColetaCadastroDto(
         TiposResiduos tipoResiduo,
 
         @NotNull(message = "Peso e obrigatorio!")
+        @Positive
         BigDecimal volumePeso,
 
 
