@@ -35,6 +35,7 @@ public class Caminhao {
     private TiposResiduos tiposResiduos;
     @Column(name = "bairro_coleta")
     private String bairroColeta;
+
     private BigDecimal capacidade;
 
 

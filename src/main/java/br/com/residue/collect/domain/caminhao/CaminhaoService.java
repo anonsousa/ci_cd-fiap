@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ public class CaminhaoService {
         BeanUtils.copyProperties(caminhaoCadastroDto, caminhao);
         if (caminhao.getTiposdeResiduos() == null){
             caminhao.setTiposdeResiduos(TiposResiduos.CONSTRUCAOeDEMOLICAO);
+            caminhao.setCapacidade(BigDecimal.valueOf(0));
         }
         return caminhaoRepository.save(caminhao);
     }

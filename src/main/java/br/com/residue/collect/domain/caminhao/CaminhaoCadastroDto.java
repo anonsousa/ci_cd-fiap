@@ -23,9 +23,5 @@ public record CaminhaoCadastroDto(
         TiposResiduos tiposResiduos,
 
         @NotBlank
-        String bairroColeta,
-
-        @NotNull
-        BigDecimal capacidade
-
+        String bairroColeta
 ) { }
