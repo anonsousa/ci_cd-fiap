@@ -27,6 +27,11 @@ public class ColetaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(coletaService.save(coletaCadastroDto));
     }
 
+    @PostMapping("/end/{uuid}")
+    public ResponseEntity endColeta(@PathVariable UUID uuid){
+        return ResponseEntity.status(HttpStatus.OK).body(coletaService.endColeta(uuid));
+    }
+
     @GetMapping("/{uuid}")
     public ResponseEntity findById(@PathVariable UUID uuid){
         return ResponseEntity.status(HttpStatus.OK).body(coletaService.findById(uuid));

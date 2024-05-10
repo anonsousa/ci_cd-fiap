@@ -25,4 +25,10 @@ public interface CaminhaoRepository extends JpaRepository<Caminhao, UUID> {
     @Modifying
     @Query("UPDATE Caminhao c SET c.capacidade = c.capacidade + :volumePeso WHERE c.id = :caminhaoId")
     void adicionarVolumePesoACapacidade(@Param("caminhaoId") UUID caminhaoId, @Param("volumePeso") BigDecimal volumePeso);
+
+    @Modifying
+    @Query("UPDATE Caminhao c SET c.capacidade = c.capacidade - :volumePeso WHERE c.id = :caminhaoId")
+    void subtrairVolumePesoACapacidade(@Param("caminhaoId") UUID caminhaoId, @Param("volumePeso") BigDecimal volumePeso);
+
+
 }

@@ -74,5 +74,22 @@ public class ColetaService {
         }
     }
 
+    @Transactional
+    public Coleta endColeta(UUID uuid){
+        Optional<Coleta> coletaOptional = coletaRepository.findById(uuid);
+        if (coletaOptional.isPresent()){
+            if(coletaOptional.get().getStatus().equals(TiposStatus.ATIVO)) {
+                Coleta coleta = coletaOptional.get();
+                caminhaoRepository.subtrairVolumePesoACapacidade(coleta.getIdCaminhao(), coleta.getVolumePeso());
+                coleta.setStatus(TiposStatus.COLETADO);
+                return coletaRepository.save(coleta);
+            } else {
+                throw new ItemNotFoundException("Esta coleta ja foi finalizada!");
+            }
+        } else {
+            throw new ItemNotFoundException("Coleta não encontrada!");
+        }
+    }
+
 
 }
