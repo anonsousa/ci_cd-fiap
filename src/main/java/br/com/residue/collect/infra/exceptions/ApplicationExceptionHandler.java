@@ -33,7 +33,6 @@ public class ApplicationExceptionHandler {
     public Map<String, String> manageDataIntegrityViolation(){
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put("Erro", "Usuario ja registrado!");
-
         return errorMap;
     }
 

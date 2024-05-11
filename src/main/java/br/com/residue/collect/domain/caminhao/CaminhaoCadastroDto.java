@@ -16,7 +16,7 @@ public record CaminhaoCadastroDto(
         String modelo,
 
         @NotBlank(message = "Renavam e obrigatorio!")
-                @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
+        @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
         String renavam,
 
 
@@ -24,4 +24,5 @@ public record CaminhaoCadastroDto(
 
         @NotBlank
         String bairroColeta
-) { }
+) {
+}

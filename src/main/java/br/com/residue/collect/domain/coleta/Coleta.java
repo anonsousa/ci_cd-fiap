@@ -1,6 +1,5 @@
 package br.com.residue.collect.domain.coleta;
 
-import br.com.residue.collect.domain.caminhao.Caminhao;
 import br.com.residue.collect.domain.caminhao.TiposResiduos;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,8 +20,10 @@ public class Coleta {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idColeta;
 
-    @Column(name = "bairro_coleta")
-    private String bairroColeta;
+    private String cep;
+
+    @Column(name = "numero_casa")
+    private String numeroCasa;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipos_residuo")
@@ -49,12 +50,12 @@ public class Coleta {
         this.idColeta = idColeta;
     }
 
-    public String getBairroColeta() {
-        return bairroColeta;
+    public String getCep() {
+        return cep;
     }
 
-    public void setBairroColeta(String bairroColeta) {
-        this.bairroColeta = bairroColeta;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public TiposResiduos getTipoResiduo() {
@@ -95,5 +96,13 @@ public class Coleta {
 
     public void setInformacoesAdicionais(String informacoesAdicionais) {
         this.informacoesAdicionais = informacoesAdicionais;
+    }
+
+    public String getNumeroCasa() {
+        return numeroCasa;
+    }
+
+    public void setNumeroCasa(String numeroCasa) {
+        this.numeroCasa = numeroCasa;
     }
 }

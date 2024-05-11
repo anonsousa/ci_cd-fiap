@@ -28,11 +28,14 @@ public class Caminhao {
 
     private String placa;
     private String modelo;
+
     @Column(unique = true)
     private String renavam;
+
     @Column(name = "tipo_residuo")
     @Enumerated(EnumType.STRING)
     private TiposResiduos tiposResiduos;
+
     @Column(name = "bairro_coleta")
     private String bairroColeta;
 
