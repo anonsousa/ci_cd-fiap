@@ -59,6 +59,10 @@ public class ColetaService {
         return coletaRepository.findByStatusColetado(pageable);
     }
 
+    public Page<Coleta> findByIdCaminhao(UUID uuid, Pageable pageable){
+        return coletaRepository.findByIdCaminhao(uuid, pageable);
+    }
+
     public Page<Coleta> findAll(Pageable pageable){
         return coletaRepository.findAll(pageable);
     }

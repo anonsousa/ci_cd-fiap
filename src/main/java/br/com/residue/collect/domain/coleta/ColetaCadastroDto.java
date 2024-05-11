@@ -9,8 +9,7 @@ import java.math.BigDecimal;
 public record ColetaCadastroDto(
 
         @NotBlank(message = "Cep e obrigatorio!")
-        @Pattern(regexp = "\\d{5}-\\d{3}")
-        @Size(min = 8, max = 8, message = "Cep deve conter 8 caracteres no formato: XXXXX-XXX")
+        @Pattern(regexp = "\\d{5}-\\d{3}", message = "Cep deve conter 8 caracteres no formato: XXXXX-XXX")
         String cep,
 
         @NotBlank(message = "Numero da casa e obrigatorio")
@@ -21,7 +20,7 @@ public record ColetaCadastroDto(
         TiposResiduos tipoResiduo,
 
         @NotNull(message = "Peso e obrigatorio!")
-        @Positive(message = "O numero deve ser positivo!")
+        @Positive(message = "O peso deve ser positivo!")
         BigDecimal volumePeso,
 
         @Size(min = 0, max = 240, message = "Informacoes adicionais devem conter no maximo 240 caracteres!")

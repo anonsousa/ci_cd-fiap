@@ -17,4 +17,6 @@ public interface ColetaRepository extends JpaRepository<Coleta, UUID> {
     @Query("SELECT c FROM Coleta c WHERE c.status = br.com.residue.collect.domain.coleta.TiposStatus.COLETADO")
     Page<Coleta> findByStatusColetado(Pageable pageable);
 
+    Page<Coleta> findByIdCaminhao(UUID idCaminhao, Pageable pageable);
+
 }

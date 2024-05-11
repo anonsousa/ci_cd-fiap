@@ -36,9 +36,6 @@ public class Caminhao {
     @Enumerated(EnumType.STRING)
     private TiposResiduos tiposResiduos;
 
-    @Column(name = "bairro_coleta")
-    private String bairroColeta;
-
     private BigDecimal capacidade;
 
 
@@ -88,14 +85,6 @@ public class Caminhao {
 
     public void setTiposdeResiduos(TiposResiduos tiposResiduos) {
         this.tiposResiduos = tiposResiduos;
-    }
-
-    public String getBairroColeta() {
-        return bairroColeta;
-    }
-
-    public void setBairroColeta(String bairroColeta) {
-        this.bairroColeta = bairroColeta;
     }
 
     public BigDecimal getCapacidade() {

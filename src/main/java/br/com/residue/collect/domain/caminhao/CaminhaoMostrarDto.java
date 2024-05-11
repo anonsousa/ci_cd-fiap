@@ -13,7 +13,6 @@ public record CaminhaoMostrarDto(
         String modelo,
         String renavam,
         TiposResiduos tiposResiduos,
-        String bairroColeta,
         BigDecimal capacidade
 
 ) {
@@ -25,7 +24,6 @@ public record CaminhaoMostrarDto(
                 caminhao.getModelo(),
                 caminhao.getRenavam(),
                 caminhao.getTiposdeResiduos(),
-                caminhao.getBairroColeta(),
                 caminhao.getCapacidade()
         );
     }

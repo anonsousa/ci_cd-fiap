@@ -1,10 +1,8 @@
 package br.com.residue.collect.domain.caminhao;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.math.BigDecimal;
 
 public record CaminhaoCadastroDto(
 
@@ -19,10 +17,6 @@ public record CaminhaoCadastroDto(
         @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
         String renavam,
 
-
-        TiposResiduos tiposResiduos,
-
-        @NotBlank
-        String bairroColeta
+        TiposResiduos tiposResiduos
 ) {
 }
