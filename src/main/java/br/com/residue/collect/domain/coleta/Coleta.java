@@ -20,6 +20,9 @@ public class Coleta {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idColeta;
 
+    @Column(name = "id_caminhao")
+    private UUID idCaminhao;
+
     private String cep;
 
     @Column(name = "numero_casa")
@@ -31,9 +34,6 @@ public class Coleta {
 
     @Column(name = "volume_peso")
     private BigDecimal volumePeso;
-
-    @Column(name = "id_caminhao")
-    private UUID idCaminhao;
 
     @Enumerated(EnumType.STRING)
     private TiposStatus status;
