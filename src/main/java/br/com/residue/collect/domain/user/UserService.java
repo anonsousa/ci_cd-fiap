@@ -22,7 +22,9 @@ public class UserService {
         User user = new User();
         BeanUtils.copyProperties(userCadastroDto, user);
         user.setSenha(senhaEncryptada);
-        user.setRole(UserRole.USER);
+        if (user.getRole() == null){
+            user.setRole(UserRole.USER);
+        }
 
         return new UserMostrarDto(userRepository.save(user));
 

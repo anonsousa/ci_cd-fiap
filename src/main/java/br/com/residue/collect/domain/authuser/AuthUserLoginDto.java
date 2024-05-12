@@ -6,15 +6,12 @@ import jakarta.validation.constraints.Size;
 
 public record AuthUserLoginDto(
 
-        @NotBlank(message = "Email e obrigatorio!")
-        @Email
+        @NotBlank(message = "Email é obrigatório")
+        @Email(message = "Insira o email com um formato válido.")
         String email,
 
-        @NotBlank(message = "Senha e obrigatorio!")
+        @NotBlank(message = "Senha é obrigatório!")
         @Size(max = 20, min = 8, message = "Tamanho minimo = 8, Tamanho maximo = 20")
         String senha
 
-
-
-) {
-}
+) { }

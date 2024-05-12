@@ -23,7 +23,7 @@ public record MotoristaAtualizarDto(
         @Pattern(regexp = "^[0-9]+$", message = "Somente números são permitidos.")
         String telefone,
 
-        @NotBlank(message = "Carteira de Habilitação é obrigatório!")
+        @NotBlank(message = "Carteira de Habilitação é obrigatória")
         @Pattern(regexp = "^[0-9]+$", message = "Somente números são permitidos.")
         @Size(min = 12, max = 12, message = "A CNH possui 12 caracteres!")
         String carteiraHabilitacao

@@ -6,21 +6,20 @@ import java.util.UUID;
 
 public record CaminhaoAtualizarDto(
 
-        @NotBlank(message = "Id da do caminhao e obrigatorio!")
+        @NotBlank(message = "Id do caminhao é obrigatório")
         UUID idCaminhao,
 
-        @NotBlank(message = "Placa e obrigatorio")
+        @NotBlank(message = "Placa é obrigatória")
         @Size(min = 7, max = 7, message = "A placa precisa de 7 caracteres")
         String placa,
 
-        @NotBlank(message = "Modelo e obrigatorio!")
+        @NotBlank(message = "Modelo é obrigatório")
         String modelo,
 
-        @NotBlank(message = "Renavam e obrigatorio!")
+        @NotBlank(message = "Renavam é obrigatório")
         @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
         String renavam,
 
         TiposResiduos tiposResiduos
 
-) {
-}
+) { }

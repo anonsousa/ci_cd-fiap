@@ -29,9 +29,9 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").hasRole("ADMIN")
-                        .anyRequest()
-                        .authenticated())
+                        //APENAS PARA TESTE O POST EM REGISTER ESTA PERMITALL
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .anyRequest().hasRole("ADMIN"))
                 .addFilterBefore(
                         verifyToken,
                         UsernamePasswordAuthenticationFilter.class

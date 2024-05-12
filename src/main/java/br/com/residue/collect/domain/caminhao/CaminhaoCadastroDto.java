@@ -6,14 +6,14 @@ import jakarta.validation.constraints.Size;
 
 public record CaminhaoCadastroDto(
 
-        @NotBlank(message = "Placa e obrigatorio")
+        @NotBlank(message = "Placa é obrigatório")
         @Size(min = 7, max = 7, message = "A placa precisa de 7 caracteres")
         String placa,
 
-        @NotBlank(message = "Modelo e obrigatorio!")
+        @NotBlank(message = "Modelo é obrigatório!")
         String modelo,
 
-        @NotBlank(message = "Renavam e obrigatorio!")
+        @NotBlank(message = "Renavam é obrigatório!")
         @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
         String renavam,
 

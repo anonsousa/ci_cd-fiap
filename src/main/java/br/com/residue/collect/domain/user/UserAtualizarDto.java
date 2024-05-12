@@ -8,17 +8,17 @@ import java.util.UUID;
 
 public record UserAtualizarDto(
 
-        @NotBlank(message = "Id e obrigatorio!")
+        @NotBlank(message = "Id é obrigatório")
         UUID userId,
 
-        @NotBlank(message = "Nome e obrigatorio!")
+        @NotBlank(message = "Nome é obrigatório")
         String nome,
 
-        @NotBlank(message = "Email e obrigatorio")
+        @NotBlank(message = "Email é obrigatório")
         @Email
         String email,
 
-        @NotBlank(message = "Senha e obrigatoria!")
+        @NotBlank(message = "Senha é obrigatória")
         @Size(max = 20, min = 8, message = "Tamanho minimo 8, maximo 20")
         String senha
 
