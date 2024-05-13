@@ -12,7 +12,6 @@ public record CaminhaoMostrarDto(
         String placa,
         String modelo,
         String renavam,
-        TiposResiduos tiposResiduos,
         BigDecimal capacidade
 
 ) {
@@ -23,7 +22,6 @@ public record CaminhaoMostrarDto(
                 caminhao.getPlaca(),
                 caminhao.getModelo(),
                 caminhao.getRenavam(),
-                caminhao.getTiposdeResiduos(),
                 caminhao.getCapacidade()
         );
     }

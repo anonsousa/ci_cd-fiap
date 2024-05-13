@@ -33,15 +33,11 @@ public class ColetaService {
         } else {
             Caminhao caminhao = caminhaoPage.get(0);
             if (caminhao.getMotorista() != null){
-                if(caminhao.getTiposdeResiduos() == coletaCadastroDto.tipoResiduo()){
-                    coleta.setIdCaminhao(caminhao.getIdCaminhao());
-                    coleta.setStatus(TiposStatus.ATIVO);
-                    coleta.setDataColeta(LocalDate.now());
-                    caminhaoRepository.adicionarVolumePesoACapacidade(caminhao.getIdCaminhao(), coleta.getVolumePeso());
-                    return coletaRepository.save(coleta);
-                } else {
-                    throw new ItemNotFoundException("Não há caminhões disponiveis no momento!");
-                }
+                coleta.setIdCaminhao(caminhao.getIdCaminhao());
+                coleta.setStatus(TiposStatus.ATIVO);
+                coleta.setDataColeta(LocalDate.now());
+                caminhaoRepository.adicionarVolumePesoACapacidade(caminhao.getIdCaminhao(), coleta.getVolumePeso());
+                return coletaRepository.save(coleta);
             } else {
                 throw new ItemNotFoundException("Não há caminhões disponiveis no momento!");
             }

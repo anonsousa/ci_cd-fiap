@@ -1,6 +1,5 @@
 package br.com.residue.collect.domain.coleta;
 
-import br.com.residue.collect.domain.caminhao.TiposResiduos;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;

@@ -1,5 +1,6 @@
 package br.com.residue.collect.domain.caminhao;
 
+import br.com.residue.collect.domain.coleta.TiposResiduos;
 import br.com.residue.collect.domain.motorista.Motorista;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -31,10 +32,6 @@ public class Caminhao {
 
     @Column(unique = true)
     private String renavam;
-
-    @Column(name = "tipo_residuo")
-    @Enumerated(EnumType.STRING)
-    private TiposResiduos tiposResiduos;
 
     private BigDecimal capacidade;
 
@@ -77,14 +74,6 @@ public class Caminhao {
 
     public void setRenavam(String renavam) {
         this.renavam = renavam;
-    }
-
-    public TiposResiduos getTiposdeResiduos() {
-        return tiposResiduos;
-    }
-
-    public void setTiposdeResiduos(TiposResiduos tiposResiduos) {
-        this.tiposResiduos = tiposResiduos;
     }
 
     public BigDecimal getCapacidade() {

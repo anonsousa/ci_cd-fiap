@@ -15,8 +15,6 @@ public record CaminhaoCadastroDto(
 
         @NotBlank(message = "Renavam é obrigatório!")
         @Size(min = 11, max = 11, message = "O renavam precisa de 11 digitos")
-        String renavam,
-
-        TiposResiduos tiposResiduos
+        String renavam
 ) {
 }

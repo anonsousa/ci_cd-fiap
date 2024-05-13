@@ -1,4 +1,4 @@
-package br.com.residue.collect.domain.caminhao;
+package br.com.residue.collect.domain.coleta;
 
 
 public enum TiposResiduos {

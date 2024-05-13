@@ -1,6 +1,5 @@
 package br.com.residue.collect.domain.coleta;
 
-import br.com.residue.collect.domain.caminhao.TiposResiduos;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

@@ -24,10 +24,8 @@ public class CaminhaoService {
 
         Caminhao caminhao = new Caminhao();
         BeanUtils.copyProperties(caminhaoCadastroDto, caminhao);
-        if (caminhao.getTiposdeResiduos() == null){
-            caminhao.setTiposdeResiduos(TiposResiduos.CONSTRUCAOeDEMOLICAO);
             caminhao.setCapacidade(BigDecimal.valueOf(0));
-        }
+
         return caminhaoRepository.save(caminhao);
     }
 
