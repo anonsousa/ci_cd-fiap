@@ -7,5 +7,6 @@ CREATE TABLE tbl_coleta (
     id_caminhao RAW(16),
     status VARCHAR2(50),
     informacoes_adicionais VARCHAR2(255),
+    data_coleta DATE,
     CONSTRAINT fk_caminhao_id FOREIGN KEY (id_caminhao) REFERENCES tbl_caminhao(id_caminhao)
 );

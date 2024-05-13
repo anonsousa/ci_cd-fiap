@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -40,6 +41,9 @@ public class Coleta {
 
     @Column(name = "informacoes_adicionais")
     private String informacoesAdicionais;
+
+    @Column(name = "data_coleta")
+    private LocalDate dataColeta;
 
 
     public UUID getIdColeta() {
@@ -104,5 +108,13 @@ public class Coleta {
 
     public void setNumeroCasa(String numeroCasa) {
         this.numeroCasa = numeroCasa;
+    }
+
+    public LocalDate getDataColeta() {
+        return dataColeta;
+    }
+
+    public void setDataColeta(LocalDate dataColeta) {
+        this.dataColeta = dataColeta;
     }
 }

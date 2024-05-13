@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,10 +33,15 @@ public class ColetaService {
         } else {
             Caminhao caminhao = caminhaoPage.get(0);
             if (caminhao.getMotorista() != null){
-                coleta.setIdCaminhao(caminhao.getIdCaminhao());
-                coleta.setStatus(TiposStatus.ATIVO);
-                caminhaoRepository.adicionarVolumePesoACapacidade(caminhao.getIdCaminhao(), coleta.getVolumePeso());
-                return coletaRepository.save(coleta);
+                if(caminhao.getTiposdeResiduos() == coletaCadastroDto.tipoResiduo()){
+                    coleta.setIdCaminhao(caminhao.getIdCaminhao());
+                    coleta.setStatus(TiposStatus.ATIVO);
+                    coleta.setDataColeta(LocalDate.now());
+                    caminhaoRepository.adicionarVolumePesoACapacidade(caminhao.getIdCaminhao(), coleta.getVolumePeso());
+                    return coletaRepository.save(coleta);
+                } else {
+                    throw new ItemNotFoundException("Não há caminhões disponiveis no momento!");
+                }
             } else {
                 throw new ItemNotFoundException("Não há caminhões disponiveis no momento!");
             }

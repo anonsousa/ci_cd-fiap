@@ -36,6 +36,20 @@ public class ApplicationExceptionHandler {
         return errorMap;
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ItemNotFoundException.class)
+    public Map<String, String> handleItemNotFoundException(ItemNotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("Erro", ex.getMessage());
+        return errors;
+    }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InvalidPasswordException.class)
+    public Map<String, String> handleInvalidPasswordException(InvalidPasswordException ex){
+        Map<String, String> errors = new HashMap<>();
+        errors.put("Erro", ex.getMessage());
+        return errors;
+    }
 
 }

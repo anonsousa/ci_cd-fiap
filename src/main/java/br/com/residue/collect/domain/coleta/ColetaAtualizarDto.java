@@ -31,5 +31,4 @@ public record ColetaAtualizarDto(
         @Size(min = 0, max = 240, message = "Informacoes adicionais devem conter no maximo 240 caracteres!")
         String informacoesAdicionais
 
-) {
-}
+) { }
