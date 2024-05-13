@@ -6,7 +6,6 @@ import java.util.UUID;
 
 public record CaminhaoAtualizarDto(
 
-        @NotBlank(message = "Id do caminhao é obrigatório")
         UUID idCaminhao,
 
         @NotBlank(message = "Placa é obrigatória")
