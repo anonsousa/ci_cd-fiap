@@ -1,5 +1,6 @@
 package br.com.residue.collect.infra.security;
 
+import br.com.residue.collect.domain.authuser.TokenDto;
 import br.com.residue.collect.domain.user.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -18,7 +19,7 @@ public class TokenService {
     @Value("${my.secret.key}")
     private String secret;
 
-    public String generateToken(User user){
+    public TokenDto generateToken(User user){
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT
@@ -27,7 +28,7 @@ public class TokenService {
                     .withSubject(user.getEmail())
                     .withExpiresAt(generateExpiresDate())
                     .sign(algorithm);
-            return token;
+            return new TokenDto(user.getEmail(), token);
         } catch (JWTCreationException error){
             throw new RuntimeException("Nao foi possivel gerar o Token");
         }

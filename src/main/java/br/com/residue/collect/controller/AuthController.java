@@ -41,9 +41,9 @@ public class AuthController {
                         authUserLoginDto.senha()
                 );
         Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-        String token = tokenService.generateToken((User) auth.getPrincipal());
+        TokenDto token = tokenService.generateToken((User) auth.getPrincipal());
 
-        return ResponseEntity.status(HttpStatus.OK).body(new TokenDto(token));
+        return ResponseEntity.status(HttpStatus.OK).body(token);
     }
 
     @PostMapping("/register")

@@ -1,6 +1,7 @@
 package br.com.residue.collect.infra.security;
 
 import br.com.residue.collect.domain.user.UserRepository;
+import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,9 +38,13 @@ public class VerifyToken extends OncePerRequestFilter {
             token = authorizationHeader.replace("Bearer", "").trim();
             String login = tokenService.validateToken(token);
             UserDetails user = userRepository.findByEmail(login);
-            UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            if (user != null){
+                UsernamePasswordAuthenticationToken authenticationToken =
+                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            } else {
+                throw new ItemNotFoundException("Usuario nao encontrado!");
+            }
         }
 
         filterChain.doFilter(request, response);
