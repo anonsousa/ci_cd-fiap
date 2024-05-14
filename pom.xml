@@ -103,7 +103,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>API-COLETA-RESIDUOS</finalName>
+		<finalName>api-coleta-residuos</finalName>
 	</build>
 
 </project>
