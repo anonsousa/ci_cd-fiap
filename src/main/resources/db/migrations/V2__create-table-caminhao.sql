@@ -4,6 +4,5 @@ CREATE TABLE tbl_caminhao (
     placa VARCHAR2(20) UNIQUE,
     modelo VARCHAR2(80),
     renavam VARCHAR2(20) UNIQUE,
-    capacidade NUMBER,
-    CONSTRAINT fk_motorista_id FOREIGN KEY (motorista_id) REFERENCES tbl_motorista(id_motorista)
+    capacidade NUMBER
 );
