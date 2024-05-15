@@ -29,7 +29,7 @@ public class Motorista {
     private String email;
     private String telefone;
 
-    @Column(name = "cateira_habilitacao", unique = true)
+    @Column(name = "carteira_habilitacao", unique = true)
     private String carteiraHabilitacao;
 
     @Column(name = "data_cadastro")
