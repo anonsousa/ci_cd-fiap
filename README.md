@@ -18,7 +18,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 - **Docker** instalado: [Instruções de instalação do Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** instalado: [Instruções de instalação do Docker Compose](https://docs.docker.com/compose/install/)
 
-### Rodar a Aplicação
+### Rodar a Aplicacao
 
 Após o build, você pode iniciar a aplicação executando:
 
