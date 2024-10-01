@@ -35,7 +35,7 @@ As variáveis de ambiente utilizadas na aplicação são configuradas diretament
 - **DATABASE_USER**: Define o nome de usuário para conectar ao banco de dados.
 - **DATABASE_PWD**: Define a senha para conectar ao banco de dados.
 
-Abaixo está o exemplo de como essas variáveis estão configuradas no arquivo `compose.yaml`:
+Abaixo está o exemplo de como essas variaveis estão configuradas no arquivo `compose.yaml`:
 
 ```yaml
 version: '3.8'
