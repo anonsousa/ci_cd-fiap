@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   pull_request:
@@ -18,5 +18,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Test
+      - name: Run Tests
         run: mvn test
