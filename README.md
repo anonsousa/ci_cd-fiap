@@ -28,7 +28,7 @@ Após o build, você pode iniciar a aplicação executando:
 
 ### Variáveis de Ambiente
 
-As variáveis de ambiente utilizadas na aplicação são configuradas diretamente no arquivo `compose.yaml`. Abaixo estão as principais variáveis que controlam o comportamento da aplicação:
+As variaveis de ambiente utilizadas na aplicação são configuradas diretamente no arquivo `compose.yaml`. Abaixo estão as principais variáveis que controlam o comportamento da aplicação:
 
 - **PROFILE**: Define o perfil da aplicação Spring Boot. Pode ser `dev` (desenvolvimento) ou `prd` (produção).
 - **DATABASE_URL**: Define a URL de conexão ao banco de dados.

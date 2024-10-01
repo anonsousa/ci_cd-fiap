@@ -11,4 +11,4 @@ services:
       - DATABASE_URL=jdbc:h2:mem:collect-prd
       - DATABASE_USER=sa
       - DATABASE_PWD=password
-      - JWT.SECRET=api
+      - JWT_SECRET=api
