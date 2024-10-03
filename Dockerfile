@@ -18,7 +18,7 @@ COPY --from=build /opt/app/target/api-coleta-residuos.jar /opt/app/app.jar
 
 WORKDIR /opt/app
 
-ENV PROFILE=dev
+ENV PROFILE=${PROFILE}
 
 EXPOSE 8080
 

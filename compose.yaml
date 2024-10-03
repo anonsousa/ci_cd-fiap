@@ -7,8 +7,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - PROFILE=dev
-      - DATABASE_URL=jdbc:h2:mem:collect-dev
-      - DATABASE_USER=sa
-      - DATABASE_PWD=password
-      - JWT_SECRET=api
+      - PROFILE=${PROFILE}
+      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PWD=${DATABASE_PWD}
+      - JWT_SECRET=${JWT_SECRET}
