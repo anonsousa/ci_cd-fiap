@@ -33,7 +33,8 @@ As variaveis de ambiente utilizadas na aplicação são configuradas diretamente
 - **PROFILE**: Define o perfil da aplicação Spring Boot. Pode ser `dev` (desenvolvimento) ou `prd` (produção).
 - **DATABASE_URL**: Define a URL de conexão ao banco de dados.
 - **DATABASE_USER**: Define o nome de usuário para conectar ao banco de dados.
-- **DATABASE_PWD**: Define a senha para conectar ao banco de dados.
+- **DATABASE_PWD**:Define a senha para conectar ao banco de dados.
+- **JWT_TOKEN**:Define o secret do JWT
 
 Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `compose.yaml`:
 
