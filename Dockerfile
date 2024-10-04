@@ -14,16 +14,12 @@ VOLUME /tmp
 
 RUN mkdir /opt/app
 
-COPY --from=build /opt/app/target/app.jar /opt/app/app.jar
+COPY --from=build /opt/app/target/api-coleta-residuos.jar /opt/app/app.jar
 
 WORKDIR /opt/app
 
-ENV PROFILE=prd
+ENV PROFILE=${PROFILE}
 
 EXPOSE 8080
 
-ARG JAR_FILE=target/api-coleta-residuos.jar
-
-ADD ${JAR_FILE} app.jar
-
-ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "/opt/app/app.jar"]

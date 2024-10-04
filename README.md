@@ -18,7 +18,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 - **Docker** instalado: [Instruções de instalação do Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** instalado: [Instruções de instalação do Docker Compose](https://docs.docker.com/compose/install/)
 
-### Rodar a Aplicação
+### Rodar a Aplicacao
 
 Após o build, você pode iniciar a aplicação executando:
 
@@ -28,14 +28,15 @@ Após o build, você pode iniciar a aplicação executando:
 
 ### Variáveis de Ambiente
 
-As variáveis de ambiente utilizadas na aplicação são configuradas diretamente no arquivo `compose.yaml`. Abaixo estão as principais variáveis que controlam o comportamento da aplicação:
+As variaveis de ambiente utilizadas na aplicação são configuradas diretamente no arquivo `compose.yaml`. Abaixo estão as principais variáveis que controlam o comportamento da aplicação:
 
 - **PROFILE**: Define o perfil da aplicação Spring Boot. Pode ser `dev` (desenvolvimento) ou `prd` (produção).
 - **DATABASE_URL**: Define a URL de conexão ao banco de dados.
 - **DATABASE_USER**: Define o nome de usuário para conectar ao banco de dados.
-- **DATABASE_PWD**: Define a senha para conectar ao banco de dados.
+- **DATABASE_PWD**:Define a senha para conectar ao banco de dados.
+- **JWT_TOKEN**:Define o secret do JWT
 
-Abaixo está o exemplo de como essas variáveis estão configuradas no arquivo `compose.yaml`:
+Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `compose.yaml`:
 
 ```yaml
 version: '3.8'
