@@ -3,6 +3,8 @@ version: '3.8'
 services:
 
   api:
+    depends_on:
+      - db
     build: .
     ports:
       - "8080:8080"
@@ -12,3 +14,14 @@ services:
       - DATABASE_USER=${DATABASE_USER}
       - DATABASE_PWD=${DATABASE_PWD}
       - JWT_SECRET=${JWT_SECRET}
+
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PWD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
