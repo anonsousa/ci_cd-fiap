@@ -1,15 +1,18 @@
-# Collect-MS - Sistema de Coleta de Resíduos
+# Sistema de Coleta de Resíduos
 
-Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta de resíduos, utilizando H2 como banco de dados em memória e Flyway para controle de migrações de banco de dados. A aplicação está configurada para ser containerizada utilizando Docker.
+Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta de resíduos, utilizando H2 como banco de dados em memória no ambiente de testes e MySql no ambiente de producao. A aplicação está configurada para ser containerizada utilizando Docker.
 
 ## Tecnologias
 
 - **Java 21 (Eclipse Temurin)**
 - **Maven**
-- **Spring Boot**
+- **Spring**
+    - Spring Validation
+    - Spring Security
     - Spring Data JPA
-    - Flyway
-    - H2 Database
+    - H2 Database (DEV)
+    - MySql Database (PROD)
+- **Lombok**
 - **Docker**
 - **Docker Compose**
 
@@ -20,10 +23,15 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 
 ### Rodar a Aplicacao
 
-Após o build, você pode iniciar a aplicação executando:
+Após o build, você pode iniciar a aplicação (em ambiente de desenvolvimento com H2) executando:
 
 ```bash
-    docker-compose up --build
+docker-compose up --build
+```
+## Testes unitarios
+
+```bash
+./mvnw test
 ```
 
 ### Variáveis de Ambiente
@@ -31,26 +39,25 @@ Após o build, você pode iniciar a aplicação executando:
 As variaveis de ambiente utilizadas na aplicação são configuradas diretamente no arquivo `compose.yaml`. Abaixo estão as principais variáveis que controlam o comportamento da aplicação:
 
 - **PROFILE**: Define o perfil da aplicação Spring Boot. Pode ser `dev` (desenvolvimento) ou `prd` (produção).
-- **DATABASE_URL**: Define a URL de conexão ao banco de dados.
+- **DATABASE_URL**: Define a URL de conexão ao banco de dados. (no ambiente de dev estamos usando o banco de dados h2, entao a url esta sendo parametrizada diretamente no application.properties)
 - **DATABASE_USER**: Define o nome de usuário para conectar ao banco de dados.
 - **DATABASE_PWD**:Define a senha para conectar ao banco de dados.
 - **JWT_TOKEN**:Define o secret do JWT
 
-Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `compose.yaml`:
+Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `compose.yaml` (-DATABASE_URL esta definido apenas para o ambiente de PROD, o ambiente de DEV esta parametrizando com a url do banco diretamente no application-dev.properties pois o banco sobe apenas para testes, sendo o h2 mais leve para este proposito):
 
 ```yaml
-version: '3.8'
-
 services:
-  api:
+    api:
     build: .
     ports:
       - "8080:8080"
     environment:
       - PROFILE=dev
-      - DATABASE_URL=jdbc:h2:mem:collect-prd
-      - DATABASE_USER=sa
+      - DATABASE_URL=jdbc:h2:mem:collect-dev
+      - DATABASE_USER=user
       - DATABASE_PWD=password
+      - JWT_SECRET=api
 
 
 
