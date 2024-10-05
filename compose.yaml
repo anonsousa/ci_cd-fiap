@@ -1,27 +1,18 @@
-version: '3.8'
-
 services:
 
   api:
-    depends_on:
-      - db
     build: .
     ports:
       - "8080:8080"
     environment:
-      - PROFILE=${PROFILE}
-      - DATABASE_URL=${DATABASE_URL}
-      - DATABASE_USER=${DATABASE_USER}
-      - DATABASE_PWD=${DATABASE_PWD}
-      - JWT_SECRET=${JWT_SECRET}
+      - PROFILE=dev
+      - DATABASE_URL=jdbc:h2:mem:collect-dev
+      - DATABASE_USER=user
+      - DATABASE_PWD=password
+      - JWT_SECRET=api
 
-  db:
-    image: postgres:15
-    ports:
-      - "5432:5432"
+  mysql:
+    image: mysql
     environment:
-      - POSTGRES_DB=${DATABASE_NAME}
-      - POSTGRES_USER=${DATABASE_USER}
-      - POSTGRES_PASSWORD=${DATABASE_PWD}
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+      MYSQL_USERNAME: ${DATABASE_USER}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
