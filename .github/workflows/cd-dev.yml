@@ -44,8 +44,9 @@ jobs:
         with:
           app-name: 'fiap-residue-collection-api-dev'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AZURE_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_PROFILE_DEV }}
           images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/residue-collection-java:${{ github.sha }}'
+
 
 
 
