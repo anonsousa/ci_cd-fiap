@@ -48,7 +48,10 @@ Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `co
 
 ```yaml
 services:
-    api:
+
+  api:
+    depends_on:
+      - mysql
     build: .
     ports:
       - "8080:8080"
@@ -59,5 +62,8 @@ services:
       - DATABASE_PWD=password
       - JWT_SECRET=api
 
-
-
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_USERNAME: ${DATABASE_USER}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
