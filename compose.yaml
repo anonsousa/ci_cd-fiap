@@ -1,6 +1,8 @@
 services:
 
   api:
+    depends_on:
+      - mysql
     build: .
     ports:
       - "8080:8080"
