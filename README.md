@@ -26,7 +26,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 Após o build, você pode iniciar a aplicação (em ambiente de desenvolvimento com H2) executando:
 
 ```bash
-docker-compose up --build
+DATABASE_USER=root DATABASE_PWD=root_pass docker-compose up --build
 ```
 ## Testes unitarios
 
@@ -49,21 +49,63 @@ Abaixo esta o exemplo de como essas variaveis estão configuradas no arquivo `co
 ```yaml
 services:
 
+  db:
+    container_name: mysql
+    image: "mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s    # Intervalo entre as verificações de saúde
+      timeout: 5s      # Tempo de espera para a verificação
+      retries: 5
+
   api:
     depends_on:
-      - mysql
+      db:
+        condition: service_healthy
     build: .
     ports:
       - "8080:8080"
     environment:
       - PROFILE=dev
       - DATABASE_URL=jdbc:h2:mem:collect-dev
-      - DATABASE_USER=user
+      - DATABASE_USER=userdev
       - DATABASE_PWD=password
       - JWT_SECRET=api
+```
 
-  mysql:
-    image: mysql
+Caso queira modificar para utilizar o perfil prd, aqui esta a confirguracao do `compose.yaml` necessaria:
+
+```yaml
+services:
+
+  db:
+    container_name: mysql
+    image: "mysql"
+    ports:
+        - "3306:3306"
     environment:
-      MYSQL_USERNAME: ${DATABASE_USER}
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
+        - MYSQL_ROOT_PASSWORD=root_pass
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s    # Intervalo entre as verificações de saúde
+      timeout: 5s      # Tempo de espera para a verificação
+      retries: 5
+
+  api:
+    depends_on:
+      db:
+        condition: service_healthy
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PROFILE=prd
+      - DATABASE_URL=jdbc:mysql://db:3306/residue_collection?createDatabaseIfNotExist=true
+      - DATABASE_USER=root
+      - DATABASE_PWD=root_pass
+      - JWT_SECRET=api
+```
