@@ -7,7 +7,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 - **Java 21 (Eclipse Temurin)**
 - **Maven**
 - **Spring**
-    - Spring Validation
+    - Spring Validation 
     - Spring Security
     - Spring Data JPA
     - H2 Database (DEV)
@@ -26,7 +26,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 Após o build, você pode iniciar a aplicação (em ambiente de desenvolvimento com H2) executando:
 
 ```bash
-DATABASE_USER=root DATABASE_PWD=root_pass docker-compose up --build
+docker compose up --build
 ```
 ## Testes unitarios
 

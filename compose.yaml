@@ -26,3 +26,4 @@ services:
       - DATABASE_USER=userdev
       - DATABASE_PWD=password
       - JWT_SECRET=api
+
