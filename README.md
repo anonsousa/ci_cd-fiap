@@ -7,7 +7,7 @@ Este projeto é uma aplicação Spring Boot desenvolvida para gerenciar a coleta
 - **Java 21 (Eclipse Temurin)**
 - **Maven**
 - **Spring**
-    - Spring Validation
+    - Spring Validation 
     - Spring Security
     - Spring Data JPA
     - H2 Database (DEV)
