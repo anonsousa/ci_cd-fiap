@@ -15,13 +15,13 @@ Funcionalidade: Cadastro e Gerenciamento de Caminhoes
       | ABC1234 |        | 12345678901 |
     Então eu devo receber um status 400
 
-  Cenário: Cadastro de um caminhão sem renavem
+  Cenário: Cadastro de um caminhão sem renavam
     Dado eu envio uma solicitação POST para "/caminhao" com os dados:
       | placa   | modelo       | renavam |
       | ABC1234 | Caminhão XYZ |         |
     Então eu devo receber um status 400
 
-  Cenário: Encontrar um caminhão existente
+  Cenário: Encontrar um caminhão inexistente
     Dado que eu estou autenticado
     E tenho um ID invalido
     Quando eu envio uma solicitação invalida GET para o endpoint "/caminhao"
