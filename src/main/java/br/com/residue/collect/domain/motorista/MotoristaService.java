@@ -3,6 +3,7 @@ package br.com.residue.collect.domain.motorista;
 
 import br.com.residue.collect.infra.exceptions.ItemNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class MotoristaService {
 
@@ -34,7 +36,7 @@ public class MotoristaService {
         if (motorista.isPresent()){
             return new MotoristaMostrarDto(motorista.get());
         } else {
-            throw new RuntimeException("Motorista nao encontrado.");
+            throw new ItemNotFoundException("Motorista nao encontrado.");
         }
     }
 

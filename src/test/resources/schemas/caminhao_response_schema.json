@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "idCaminhao": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "motorista": {
+      "type": ["object", "null"],
+      "description": "Informações do motorista",
+      "properties": {
+        "idMotorista": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "telefone": {
+          "type": "string"
+        },
+        "carteiraHabilitacao": {
+          "type": "string"
+        }
+      }
+    },
+    "placa": {
+      "type": "string"
+    },
+    "modelo": {
+      "type": "string"
+    },
+    "renavam": {
+      "type": "string"
+    },
+    "capacidade": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "idCaminhao",
+    "placa",
+    "modelo",
+    "renavam"
+  ]
+}

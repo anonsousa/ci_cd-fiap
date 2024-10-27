@@ -28,7 +28,7 @@ Após o build, você pode iniciar a aplicação (em ambiente de desenvolvimento 
 ```bash
 docker compose up --build
 ```
-## Testes unitarios
+## Testes de Bdd
 
 ```bash
 ./mvnw test

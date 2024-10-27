@@ -2,13 +2,14 @@ package br.com.residue.collect.domain.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
 public record UserAtualizarDto(
 
-        @NotBlank(message = "Id é obrigatório")
+        @NotNull(message = "Id é obrigatório")
         UUID userId,
 
         @NotBlank(message = "Nome é obrigatório")

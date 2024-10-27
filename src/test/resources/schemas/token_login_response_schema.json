@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "O endereço de e-mail do usuário."
+    },
+    "token": {
+      "type": "string",
+      "description": "O token de autenticação gerado para o usuário."
+    }
+  },
+  "required": ["email", "token"],
+  "additionalProperties": false
+}

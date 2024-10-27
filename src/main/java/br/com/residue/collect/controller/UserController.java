@@ -39,13 +39,4 @@ public class UserController {
         userService.deleteUser(uuid);
         return  ResponseEntity.status(HttpStatus.NO_CONTENT).body("Usuario deletado com sucesso!");
     }
-
-
-
-
-
-
-
-
-
 }
