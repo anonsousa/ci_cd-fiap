@@ -37,20 +37,15 @@ public class MotoristaController {
         return ResponseEntity.status(HttpStatus.OK).body(motoristaService.findAll(pageable));
     }
 
-    @DeleteMapping("/{uuid}")
-    public ResponseEntity deleteById(@PathVariable UUID uuid){
-        motoristaService.deleteById(uuid);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Motorista deletado com sucesso");
-    }
-
     @PutMapping
     public ResponseEntity update(@RequestBody @Valid MotoristaAtualizarDto motoristaAtualizarDto){
         return ResponseEntity.status(HttpStatus.OK).body(motoristaService.update(motoristaAtualizarDto));
     }
 
-
-
-
-
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity deleteById(@PathVariable UUID uuid){
+        motoristaService.deleteById(uuid);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Motorista deletado com sucesso");
+    }
 
 }

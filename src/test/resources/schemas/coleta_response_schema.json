@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Coleta",
+  "type": "object",
+  "properties": {
+    "idColeta": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identificador único da coleta"
+    },
+    "idCaminhao": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identificador único do caminhão"
+    },
+    "cep": {
+      "type": "string",
+      "description": "Código postal do local de coleta"
+    },
+    "numeroCasa": {
+      "type": "string",
+      "description": "Número da casa ou endereço específico"
+    },
+    "tipoResiduo": {
+      "type": "string",
+      "enum": ["PLASTICO", "PAPEL", "VIDRO", "METAL", "ORGANICO"],
+      "description": "Tipo de resíduo a ser coletado"
+    },
+    "volumePeso": {
+      "type": "number",
+      "description": "Peso ou volume do resíduo coletado"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDENTE", "COLETADO", "CANCELADO", "ATIVO"],
+      "description": "Status atual da coleta"
+    },
+    "informacoesAdicionais": {
+      "type": "string",
+      "maxLength": 250,
+      "description": "Informações complementares sobre a coleta"
+    },
+    "dataColeta": {
+      "type": "string",
+      "description": "Data em que a coleta foi realizada"
+    }
+  },
+  "required": [
+    "idColeta",
+    "idCaminhao",
+    "cep",
+    "numeroCasa",
+    "tipoResiduo",
+    "volumePeso",
+    "status",
+    "informacoesAdicionais",
+    "dataColeta"
+  ],
+  "additionalProperties": false
+}

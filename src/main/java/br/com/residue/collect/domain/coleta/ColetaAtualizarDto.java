@@ -8,13 +8,12 @@ import java.util.UUID;
 public record ColetaAtualizarDto(
 
 
-        @NotBlank(message = "Id da coleta é obrigatório")
         UUID idColeta,
 
         @NotBlank(message = "Cep é obrigatório")
-        @Pattern(regexp = "\\d{5}-\\d{3}")
-        @Size(min = 8, max = 8, message = "Cep deve conter 8 caracteres no formato: XXXXX-XXX")
+        @Pattern(regexp = "\\d{5}-\\d{3}", message = "Cep deve conter 8 caracteres no formato: XXXXX-XXX")
         String cep,
+
 
         @NotBlank(message = "Numero da casa é obrigatório")
         @Size(min = 2, max = 6, message = "O numero da casa deve conter no minimo 2 e no maximo 6 de tamanho!")

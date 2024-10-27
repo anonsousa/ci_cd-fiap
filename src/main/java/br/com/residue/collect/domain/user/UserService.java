@@ -40,10 +40,11 @@ public class UserService {
     }
 
     public UserMostrarDto updateUser(UserAtualizarDto userAtualizarDto){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         Optional<User> userOptional = userRepository.findById(userAtualizarDto.userId());
         if(userOptional.isPresent()){
             User user = userOptional.get();
-            if(user.getPassword().equals(userAtualizarDto.senha())){
+            if(bCryptPasswordEncoder.matches(userAtualizarDto.senha(), userOptional.get().getPassword())){
                 BeanUtils.copyProperties(userAtualizarDto, user);
                 return new UserMostrarDto(userRepository.save(user));
             } else {
